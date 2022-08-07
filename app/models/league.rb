@@ -6,7 +6,7 @@ class League < ApplicationRecord
   has_many :clubs
 
   def table_rows(year=Time.current.year)
-    rows = clubs.map { |club| Poros::LeagueTableRow.new(club, year).prepare_row }
+    rows = clubs.map { |club| Poros::LeagueTableRow.new(club, year) }
 
     ranked_rows_by_points = rank_rows(rows)
     rank_rows_have_the_same_points(ranked_rows_by_points)
